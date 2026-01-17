@@ -1,16 +1,18 @@
-import express from "express";
-import "dotenv/config";
+import express from "express"
+import cookieParser from "cookie-parser"
+import "dotenv/config"
 import router from "./routes/auth.js"
-import {ConnectDB} from "./lib/db.js";
-
-const PORT = process.env.PORT;
+import {ConnectDB} from "./lib/db.js"
 
 const app = express();
+const PORT = process.env.PORT;
+
+
 app.use(express.json());
+app.use(cookieParser());
+
+
 app.use("/auth", router);
-
-
-
 
 
 
