@@ -1,8 +1,6 @@
 import User from "../models/user.js"
 import jwt from "jsonwebtoken"
 
-
-
 export async function register(req, res) {
 
     const {email, userName, password} = req.body;
@@ -35,7 +33,7 @@ export async function register(req, res) {
 
         //send the token in cookie format 
         res.cookie("jwt", token,{
-            maxAge: 7 * 24 * 60 * 60 * 1000,
+            maxAge: 7 * 24 * 60 * 60 * 1000, //cookie expires in 7 days
             httpOnly: true, // prevent XSS attacks,
             sameSite: "strict", // prevent CSRF attacks
             secure: process.env.NODE_ENV === "production",
@@ -46,15 +44,50 @@ export async function register(req, res) {
         
     } catch(error){
         console.log("Error in register controller", error);
+        return res.status(500).json({message: "internal server error"});
+    }
+}
+
+export async function login(req, res) {
+    const {email, password} = req.body;
+
+    try{
+        if(!email || !password){
+            return res.status(400).json({message: "All fields are required"});
+        }
+
+        const user = await User.findOne({email});
+        if(!user){
+            return res.status(401).json({message: "invalid credentials"});
+        }
+
+        const isCorrectPassword = await user.comparePassword(password);
+        if(!isCorrectPassword){
+            return res.status(401).json({message : "invalid email or password"});
+        }
+
+        const token = jwt.sign({id : user._id}, process.env.ACCESS_TOKEN_SECRET,{
+            expiresIn: "7d",
+        });
+
+        res.cookie("jwt", token, {
+            maxAge : 7 * 24 * 60 * 60 * 1000,
+            httpOnly: true,
+            sameSite: "strict",
+            secure: process.env.NODE_ENV === "production",
+        });
+        
+        return res.status(200).json({sucess : true, user})
+
+
+    } catch(error){
+        console.log("Error in the login controller: ", error);
         return res.status(500).json({"message": "internal server error"});
     }
 }
 
-export async function login() {
-
-}
-
-export async function logout() {
-
+export async function logout(req, res) {
+    res.clearCookie("jwt");
+    return res.status(200).json({success: true, message: "logout successful"})
 }
 
