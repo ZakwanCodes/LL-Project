@@ -26,7 +26,7 @@ export async function register(req, res) {
             password,
             });
         
-        //create user token
+        //create user token (header, payload, signature)
         const token = jwt.sign({id : newUser._id}, process.env.ACCESS_TOKEN_SECRET, {
             expiresIn: "7d",
         });
