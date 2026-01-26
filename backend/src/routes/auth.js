@@ -11,7 +11,7 @@ router.post("/login", login);
 router.post("/logout", logout);
 
 router.get("/me", protectedRoute, (req, res) => {
-    res.send.json({success: true, user: req.user});
+    res.status(201).json({success: true, user: req.user});
 });
 
 

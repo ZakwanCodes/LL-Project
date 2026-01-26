@@ -2,6 +2,7 @@ import {useState} from "react"
 import {register} from "../api/auth.js"
 
 
+
 function Register(){
 
     const [username, setUsername] = useState(""); 
@@ -22,6 +23,7 @@ function Register(){
         try{
             const result = await register(email, username, password);
             console.log(result);
+
         } catch(error){
             console.log(error);
         }
