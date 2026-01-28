@@ -5,7 +5,7 @@ import {logout} from "../api/auth.js"
 function Homepage(){
     const navigate = useNavigate();
     const { setUser } = useAuth();
-   async function logoutButton(){
+    async function logoutButton(){
     
 
 

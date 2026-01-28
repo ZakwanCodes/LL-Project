@@ -1,10 +1,14 @@
 import {useState} from "react"
 import {register} from "../api/auth.js"
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/authContext.jsx";
+import styles from "./register.module.css"
 
 
 
 function Register(){
-
+    const navigate = useNavigate();
+    const {setUser} = useAuth();
     const [username, setUsername] = useState(""); 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -22,6 +26,8 @@ function Register(){
     async function registerButton(){
         try{
             const result = await register(email, username, password);
+            setUser(result.user);   
+            navigate("/");
             console.log(result);
 
         } catch(error){
@@ -30,36 +36,50 @@ function Register(){
     }
     
     return(
-        <div>
-            <div>
-                Register
+        <div className={styles.container}>
+            <div className={styles.card}>
+                <div className={styles.title}>
+                    Create Account
+                </div>
+                <div className={styles.formGroup}>
+                    <label className={styles.label}>User Name</label>
+                    <input
+                        className={styles.input}
+                        type="text"
+                        placeholder="Enter your username"
+                        value = {username}
+                        onChange = {saveInputUsername}
+                    />
+                </div>
+                <div className={styles.formGroup}>
+                    <label className={styles.label}>Email</label>
+                    <input
+                        className={styles.input}
+                        type="email"
+                        placeholder="Enter your email"
+                        value = {email}
+                        onChange = {saveInputEmail}
+                    />
+                </div>
+                <div className={styles.formGroup}>
+                    <label className={styles.label}>Password</label>
+                    <input
+                        className={styles.input}
+                        type="password"
+                        placeholder="Enter your password"
+                        value = {password}
+                        onChange = {saveInputPassword}
+                    />
+                </div>
+                <button
+                    className={styles.button}
+                    onClick = {registerButton}
+                >Register</button>
+                <div className={styles.footer}>
+                    Already have an account? <a href="/login" className={styles.link}>Sign In</a>
+                </div>
             </div>
-            <div>
-                User Name
-            </div>
-            <input
-                value = {username}
-                onChange = {saveInputUsername}
-            />
-            <div>
-                Email
-            </div>
-            <input
-            value = {email}
-                onChange = {saveInputEmail}
-            />
-            <div>
-                Password
-            </div>
-            <input
-                value = {password}
-                onChange = {saveInputPassword}
-            />
-            <button
-                onClick = {registerButton}
-            > Register </button>
         </div>
-
     );
 }
 export default Register;
