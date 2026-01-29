@@ -12,6 +12,7 @@ function Register(){
     const [username, setUsername] = useState(""); 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
 
     function saveInputUsername(input){
         setUsername(input.target.value);
@@ -26,6 +27,10 @@ function Register(){
     async function registerButton(){
         try{
             const result = await register(email, username, password);
+            if(result.message){
+                setError(result.message);
+                return;
+            }
             setUser(result.user);   
             navigate("/");
             console.log(result);
@@ -41,6 +46,7 @@ function Register(){
                 <div className={styles.title}>
                     Create Account
                 </div>
+                {error && <div className = {styles.error}> {error} </div>}
                 <div className={styles.formGroup}>
                     <label className={styles.label}>User Name</label>
                     <input

@@ -1,16 +1,31 @@
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../context/authContext.jsx";
+import { useEffect, useState } from "react";
+import styles from "./ProtectedRoute.module.css";
 
 function ProtectedRoute({ children }) {
   const { user, loading } = useAuth();
 
-  // Still checking /me? Show nothing or a spinner
-  if (loading) return <p>Loading...</p>;
+  
 
-  // Not logged in? Redirect to login page
-  if (!user) return <Navigate to="/login" />;
+  // Still loading OR delay not finished
+  if (loading) {
+    return (
+      <div className={styles.loadingContainer}>
+        <div className={styles.spinner}>
+          <div className={styles.spinnerCircle}></div>
+          <p className={styles.loadingText}>Loading...</p>
+        </div>
+      </div>
+    );
+  }
 
-  // Logged in? Render the page
+  // Not logged in
+  if (!user) {
+    return <Navigate to="/login" />;
+  }
+
+  // Logged in
   return children;
 }
 

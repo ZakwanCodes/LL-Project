@@ -7,12 +7,12 @@ export async function register(req, res) {
 
     try{    
         if(!email || !userName || !password){
-            return res.status(400).json({"message" : "All fields are required"});
+            return res.status(400).json({message : "All fields are required"});
         }
 
         const existingUser = await User.findOne({email});
         if(existingUser) {
-            return res.status(400).json({"message" : "User already registered"});
+            return res.status(400).json({message : "User already registered"});
         }
 
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -82,9 +82,10 @@ export async function login(req, res) {
 
     } catch(error){
         console.log("Error in the login controller: ", error);
-        return res.status(500).json({"message": "internal server error"});
+        return res.status(500).json({message: "internal server error"});
     }
 }
+
 
 export async function logout(req, res) {
     res.clearCookie("jwt");
