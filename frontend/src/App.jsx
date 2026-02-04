@@ -1,6 +1,7 @@
 import Register from "./pages/register.jsx"
 import Login from "./pages/login.jsx"
 import Homepage from "./pages/homepage.jsx"
+import InventoryPage from "./pages/inventory.jsx"
 import {Routes, Route} from "react-router-dom"
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 function App(){
@@ -15,6 +16,14 @@ function App(){
               <Homepage/>
             </ProtectedRoute>
           }/>
+          <Route 
+            path = "/inventory"
+            element = {
+              <ProtectedRoute>
+                <InventoryPage/>
+              </ProtectedRoute>
+            }
+          />
     </Routes>
   );
 }

@@ -42,11 +42,3 @@ userSchema.methods.comparePassword = async function (enteredPassword) {
 
 export default mongoose.model("User", userSchema);
    
-
-
-
-
-//TODO NEXT TIME:
-//1. Input user and pass from frontend
-//2. connect frontend to backend
-//3. set up api call for user and pass 
