@@ -1,31 +1,18 @@
 import {useNavigate} from "react-router-dom"
-import { useAuth } from "../context/authContext.jsx";
+import { useAuth } from "../context/authContext.jsx"
 import {logout} from "../api/auth.js"
+import styles from "./homepage.module.css"
+import Navbar from "../components/Navbar.jsx"
 
 function Homepage(){
-    const navigate = useNavigate();
-    const { setUser } = useAuth();
-    async function logoutButton(){
-    
-
-
-    try{
-      await logout();
-      setUser(null);           
-      navigate("/login");      
-    } catch(error){
-      console.log(error);
-    }
-  }
 
   return(
 
     <div>
-      <button
-        onClick = {logoutButton}
-      >Logout </button>
+      <Navbar/>
+     
     </div>
-  )
+  );
 }
 
 
