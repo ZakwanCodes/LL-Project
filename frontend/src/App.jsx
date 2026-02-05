@@ -4,6 +4,7 @@ import Homepage from "./pages/homepage.jsx"
 import InventoryPage from "./pages/inventory.jsx"
 import {Routes, Route} from "react-router-dom"
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
+
 function App(){
   return(
     <Routes>

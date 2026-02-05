@@ -1,9 +1,11 @@
+import "dotenv/config"
 import express from "express"
 import cookieParser from "cookie-parser"
-import "dotenv/config"
-import router from "./routes/auth.js"
-import {ConnectDB} from "./lib/db.js"
 import cors from "cors"
+import AuthRoutes from "./routes/auth.js"
+import LoomianRoutes from "./routes/loomian.js"
+import {ConnectDB} from "./lib/db.js"
+
 
 const app = express();
 const PORT = process.env.PORT;
@@ -16,7 +18,8 @@ app.use(express.json());
 app.use(cookieParser());
 
 
-app.use("/api/auth", router);
+app.use("/api/auth", AuthRoutes);
+app.use("/api/loomian", LoomianRoutes);
 
 
 

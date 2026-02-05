@@ -5,9 +5,9 @@
 
 .container {
     display: flex;
-    height: 80px;
+    height: 100px;
     padding: 0;
-    background: #000;
+    background: #000000;
 }
 
 /* All navbar sections */
