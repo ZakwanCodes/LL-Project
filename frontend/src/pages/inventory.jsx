@@ -1,16 +1,31 @@
 import Navbar from "../components/Navbar.jsx"
 import { useInventory } from "../context/inventoryContext.jsx";
 import styles from "./inventory.module.css"
-
+import {useSearch} from "../context/searchContext.jsx"
+import {useEffect} from "react";
 function InventoryPage(){
     
     const {inventory, removeOneLoom, removeAllLoom} = useInventory();
+
+    const {searchInput} = useSearch();
+
+    const filteredLoomians = inventory.filter(function (inv) {
+        return inv.loomian.name.toLowerCase().includes(searchInput.toLowerCase());
+    });
+
+    useEffect(() => {
+        try {
+            localStorage.setItem('loomian-inventory', JSON.stringify(inventory));
+        } catch (error) {
+            console.error('Failed to save inventory to localStorage:', error);
+        }
+    }, [inventory]);
 
     return (
         <div>
             <Navbar/>
             <div className = {styles.container}>
-                {inventory.map((loom) => {
+                {filteredLoomians.map((loom) => {
                     return <div key = {loom._id} className = {styles.loomianCard}>
                          <img 
                          src = {loom.loomian.image}

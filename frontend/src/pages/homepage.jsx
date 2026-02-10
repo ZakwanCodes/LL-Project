@@ -4,6 +4,7 @@ import { getAllLoomians } from "../api/loomian.js"
 import styles from "./homepage.module.css"
 import {Link} from "react-router-dom"
 import { useInventory } from "../context/inventoryContext.jsx"    
+import { useSearch } from "../context/searchContext.jsx"
 
 function Homepage(){
 
@@ -22,37 +23,48 @@ function Homepage(){
     fetchLoomians();
   }, []); 
 
+  const {searchInput} = useSearch();
 
-  return(
-
-    <div>
-      <Navbar/>
-
-      <div className={styles.loomianGrid}>
-        {loomians.map((loomian) => {
-          return <div key={loomian._id} className={styles.loomianCard}>
-            <Link to = {`/loomian/${loomian._id}`}>
-            <img 
-              src={loomian.image} 
-              alt={loomian.image}
-              className={styles.loomianImage}
-            />
-            </Link>
-            <h3 className={styles.loomianName}>{loomian.name}</h3>
+   const filteredLoomians = loomians.filter(function (loomian) {
+        return loomian.name.toLowerCase().includes(searchInput.toLowerCase());
+    });
   
-            <button 
-              onClick={() => {
-                addLoom(loomian._id);
-              }}
-              className = {styles.addToInventoryButton}>
-              Add to Inventory </button>
+
+      return (
+        <div>
+          <Navbar/>
+          <div className={styles.loomianGrid}>
+              {filteredLoomians.map(function (loomian) {
+                  return (
+                      <div key={loomian._id} className={styles.loomianCard}>
+                          <Link to={`/loomian/${loomian._id}`}>
+                              <img
+                                  src={loomian.image}
+                                  alt={loomian.name}
+                                  className={styles.loomianImage}
+                              />
+                          </Link>
+
+                          <h3 className={styles.loomianName}>
+                              {loomian.name}
+                          </h3>
+
+                          <button
+                              onClick={function () {
+                                  addLoom(loomian._id);
+                              }}
+                              className={styles.addToInventoryButton}
+                          >
+                              Add to Inventory
+                          </button>
+                      </div>
+                  );
+              })}
           </div>
-        })}
       </div>
-     
-    </div>
-  );
+    );
 }
+
 
 
 export default Homepage;

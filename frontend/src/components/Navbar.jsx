@@ -2,10 +2,12 @@ import styles from "./Navbar.module.css"
 import { Link, useNavigate } from "react-router-dom"
 import { useAuth } from "../context/authContext.jsx";
 import { logout } from "../api/auth.js";
+import { useSearch } from "../context/searchContext.jsx";
 
 function Navbar(){
     const { setUser } = useAuth();
     const navigate = useNavigate();
+    const {searchInput, setSearchInput} = useSearch();
 
     async function logoutButton(){
         try{
@@ -17,13 +19,22 @@ function Navbar(){
         }
     }
 
+    function handleChange(input){
+        setSearchInput(input.target.value);
+    }
+
+    
+
     return(
 
         <nav className = {styles.container}>
 
             <div className = {styles.search}>
                 <img src="/searchicon.png" className={styles.icon} alt="search icon" />
-                <input className={styles.searchInput} />
+                <input 
+                className={styles.searchInput} 
+                onChange={handleChange}
+                />
             </div>
 
             <div className = {styles.homepage}>

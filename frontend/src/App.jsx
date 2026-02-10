@@ -9,7 +9,6 @@ import { InventoryProvider } from "./context/inventoryContext.jsx"
 
 function App(){
   return(
-    <InventoryProvider>
       <Routes>
           <Route path="/register" element={<Register/>}/>
           <Route path="/login" element={<Login/>}/>
@@ -37,7 +36,6 @@ function App(){
               }
             />
       </Routes>
-    </InventoryProvider>
   );
 }
 
