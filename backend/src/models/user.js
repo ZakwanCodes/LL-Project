@@ -2,7 +2,7 @@ import mongoose from "mongoose"
 import bcrypt from "bcryptjs"
 
 const inventoryItemSchema = new mongoose.Schema({
-    loomianId: {
+    loomian: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Loomian",
         required: true

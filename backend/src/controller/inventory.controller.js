@@ -1,41 +1,33 @@
 import User from "../models/user.js";
-import Loomian from "../models/loomians.js";
-
 
 
 export async function addToInventory(req, res) {
     try {
-        const userId = req.user.id;           // comes from auth middleware
+        const userId = req.user.id;
         const { loomianId } = req.body;
 
         const user = await User.findById(userId);
-        if (!user) {
-            return res.status(404).json({ message: "User not found" });
-        }
-
-        const loomian = await Loomian.findById(loomianId);
-        if (!loomian) {
-            return res.status(404).json({ message: "Loomian not found" });
-        }
 
         const existing = user.inventory.find(
-            item => item.loomianId.toString() === loomianId
+            item => item.loomian.toString() === loomianId
         );
 
         if (existing) {
             existing.quantity += 1;
         } else {
             user.inventory.push({
-                loomianId: loomian._id,
-                name: loomian.name,
-                value: loomian.value,
-                image: loomian.image,
+                loomian: loomianId,
                 quantity: 1
             });
         }
 
         await user.save();
-        res.json(user.inventory);
+
+        const populatedUser = await User.findById(userId)
+            .populate("inventory.loomian");
+
+        res.json(populatedUser.inventory);
+
 
     } catch (error) {
         console.error(error);
@@ -51,7 +43,7 @@ export async function removeOne(req, res) {
         const user = await User.findById(userId);
 
         const item = user.inventory.find(
-            i => i.loomianId.toString() === loomianId
+            i => i.loomian.toString() === loomianId
         );
 
         if (!item) {
@@ -62,17 +54,22 @@ export async function removeOne(req, res) {
 
         if (item.quantity <= 0) {
             user.inventory = user.inventory.filter(
-                i => i.loomianId.toString() !== loomianId
+                i => i.loomian.toString() !== loomianId
             );
         }
 
         await user.save();
-        res.json(user.inventory);
+
+        const populatedUser = await User.findById(userId)
+            .populate("inventory.loomian");
+
+        res.json(populatedUser.inventory);
 
     } catch (error) {
         res.status(500).json({ message: "Server error" });
     }
 }
+
 
 export async function removeAll(req, res) {
     try {
@@ -82,14 +79,19 @@ export async function removeAll(req, res) {
         const user = await User.findById(userId);
 
         user.inventory = user.inventory.filter(
-            i => i.loomianId.toString() !== loomianId
+            i => i.loomian.toString() !== loomianId
         );
 
         await user.save();
-        res.json(user.inventory);
+
+        const populatedUser = await User.findById(userId)
+            .populate("inventory.loomian");
+
+        res.json(populatedUser.inventory);
 
     } catch (error) {
         res.status(500).json({ message: "Server error" });
     }
 }
+
 

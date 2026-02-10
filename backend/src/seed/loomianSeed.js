@@ -18,7 +18,7 @@ async function seedLoomians() {
                 event: "none",
                 value: 300,
                 demand: 8,
-                image: "/public/gamma-duskit.png"
+                image: "/gamma-duskit.png"
             },
             {
                 name: "Gamma Ikazune",
@@ -27,7 +27,7 @@ async function seedLoomians() {
                 event: "none",
                 value: 300,
                 demand: 10,
-                image: "/public/gamma-ikazune.png"
+                image: "/gamma-ikazune.png"
             },
             {
                 name : "Gamma Protogon",
@@ -36,7 +36,7 @@ async function seedLoomians() {
                 description: "asdad",
                 value: 500,
                 demand: 10,
-                image: "/public/gamma-protogon.png"
+                image: "/gamma-protogon.png"
             },
             {
                 name : "Gamma Mutagon",
@@ -45,7 +45,7 @@ async function seedLoomians() {
                 description: "sdadsa",
                 value: 200,
                 demand: 4,
-                image: "/public/gamma-mutagon.png" 
+                image: "/gamma-mutagon.png" 
             },
             {
                 name: "Gamma Dakuda",
@@ -54,7 +54,7 @@ async function seedLoomians() {
                 description: "asdads",
                 value: 300,
                 demand: 8,
-                image: "/public/gamma-dakuda.png"
+                image: "/gamma-dakuda.png"
             },
             {
                 name: "Gamma Cosmeleon",
@@ -63,7 +63,7 @@ async function seedLoomians() {
                 description: "sadasd",
                 value: 300,
                 demand: 8,
-                image: "/public/gamma-cosmeleon.png"
+                image: "/gamma-cosmeleon.png"
             },
             {
                 name: "Gamma Cephalops",
@@ -72,7 +72,7 @@ async function seedLoomians() {
                 description: "sadas",
                 value: 300,
                 demand: 8,
-                image: "/public/gamma-cephalops.png"
+                image: "/gamma-cephalops.png"
             },
         ]);
 

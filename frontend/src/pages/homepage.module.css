@@ -47,3 +47,7 @@
     margin: 5px;
     cursor: pointer;
 }
+
+.addToInventoryButton:hover{
+  background: #51a930;
+}

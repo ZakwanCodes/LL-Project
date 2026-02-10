@@ -31,7 +31,10 @@ function Navbar(){
             </div>
 
             <div className = {styles.inventory}>
+                <Link to = "/inventory" className={styles.icon}> 
                 <img src="/backpackicon.png" className={styles.icon} alt="backpack icon" />
+
+                </Link>
                 <Link to = "/inventory" className={styles.link}>Inventory</Link>
             </div>
 

@@ -31,6 +31,8 @@
     gap: 5px;
 }
 
+
+
 /* Icons */
 .icon {
     background: white;
@@ -40,7 +42,7 @@
     object-fit: contain;
 }
 
-/* Search input */
+
 .searchInput {
     border: 1px solid #ddd;
     padding: 6px 8px;
@@ -48,7 +50,7 @@
     width: 160px;
 }
 
-/* Links */
+
 .link {
     text-decoration: none;
     color: #fbfbfb;

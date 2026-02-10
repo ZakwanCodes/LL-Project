@@ -8,7 +8,7 @@ import { useInventory } from "../context/inventoryContext.jsx"
 function Homepage(){
 
   const [loomians, setLoomians] = useState([]);
-  //fix: const {inventoryId, setInventoryId} = useInventory(); 
+  const {addLoom} = useInventory(); 
 
   useEffect(() => {
     async function fetchLoomians(){
@@ -21,6 +21,7 @@ function Homepage(){
     }
     fetchLoomians();
   }, []); 
+
 
   return(
 
@@ -36,11 +37,12 @@ function Homepage(){
               alt={loomian.image}
               className={styles.loomianImage}
             />
-            <h3 className={styles.loomianName}>{loomian.name}</h3>
             </Link>
+            <h3 className={styles.loomianName}>{loomian.name}</h3>
+  
             <button 
               onClick={() => {
-                setInventoryId(prev => [...prev, loomian._id]);
+                addLoom(loomian._id);
               }}
               className = {styles.addToInventoryButton}>
               Add to Inventory </button>
