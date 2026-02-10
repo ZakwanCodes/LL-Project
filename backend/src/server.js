@@ -4,6 +4,7 @@ import cookieParser from "cookie-parser"
 import cors from "cors"
 import AuthRoutes from "./routes/auth.js"
 import LoomianRoutes from "./routes/loomian.js"
+import InventoryRoutes from "./routes/inventory.js"
 import {ConnectDB} from "./lib/db.js"
 
 
@@ -20,6 +21,7 @@ app.use(cookieParser());
 
 app.use("/api/auth", AuthRoutes);
 app.use("/api/loomian", LoomianRoutes);
+app.use("/api/inventory", InventoryRoutes);
 
 
 

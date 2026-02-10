@@ -1,4 +1,6 @@
 /* Homepage.css */
+
+
 .loomianGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -43,4 +45,5 @@
     border-radius: 8px;
     border: 0px;
     margin: 5px;
+    cursor: pointer;
 }

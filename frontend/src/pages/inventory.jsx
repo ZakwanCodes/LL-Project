@@ -1,7 +1,12 @@
+import Navbar from "../components/Navbar.jsx"
+
+
 function InventoryPage(){
-    return(
-        <div>Inventory page</div>
-    )
+    
+    return (
+        <Navbar/>
+);
+
 }
 
 export default InventoryPage;

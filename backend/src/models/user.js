@@ -1,6 +1,20 @@
 import mongoose from "mongoose"
 import bcrypt from "bcryptjs"
 
+const inventoryItemSchema = new mongoose.Schema({
+    loomianId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Loomian",
+        required: true
+    },
+    quantity: {
+        type: Number,
+        required: true,
+        default: 1
+    }
+});
+
+
 const userSchema = new mongoose.Schema({
     email : {
         type: String,
@@ -13,6 +27,10 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
+    },
+    inventory : {
+        type: [inventoryItemSchema],
+        default: []
     },
 }, {
     timestamps: true

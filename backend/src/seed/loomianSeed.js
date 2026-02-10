@@ -13,6 +13,8 @@ async function seedLoomians() {
         await Loomian.insertMany([ //reinsert each time 
             {
                 name: "Gamma Duskit",
+                rarity: "Roamer",
+                description: "Duskit is a Spirit/Mind-type Loomian introduced in Loomian Legacy - Veils of Shadow. It is the Guardian Spirit of Gale Forest and Cheshma Town.",
                 event: "none",
                 value: 300,
                 demand: 8,
@@ -20,6 +22,8 @@ async function seedLoomians() {
             },
             {
                 name: "Gamma Ikazune",
+                rarity: "Roamer",
+                description: "asdad",
                 event: "none",
                 value: 300,
                 demand: 10,
@@ -28,20 +32,26 @@ async function seedLoomians() {
             {
                 name : "Gamma Protogon",
                 event: "none",
+                rarity: "Roamer",
+                description: "asdad",
                 value: 500,
                 demand: 10,
                 image: "/public/gamma-protogon.png"
             },
             {
-              name : "Gamma Mutagon",
-              event: "none",
-              value: 200,
-              demand: 4,
-              image: "/public/gamma-mutagon.png" 
+                name : "Gamma Mutagon",
+                event: "none",
+                rarity: "Roamer",
+                description: "sdadsa",
+                value: 200,
+                demand: 4,
+                image: "/public/gamma-mutagon.png" 
             },
             {
                 name: "Gamma Dakuda",
                 event: "none",
+                rarity: "Roamer",
+                description: "asdads",
                 value: 300,
                 demand: 8,
                 image: "/public/gamma-dakuda.png"
@@ -49,6 +59,8 @@ async function seedLoomians() {
             {
                 name: "Gamma Cosmeleon",
                 event: "none",
+                rarity: "Roamer",
+                description: "sadasd",
                 value: 300,
                 demand: 8,
                 image: "/public/gamma-cosmeleon.png"
@@ -56,6 +68,8 @@ async function seedLoomians() {
             {
                 name: "Gamma Cephalops",
                 event: "none",
+                rarity: "Roamer",
+                description: "sadas",
                 value: 300,
                 demand: 8,
                 image: "/public/gamma-cephalops.png"
