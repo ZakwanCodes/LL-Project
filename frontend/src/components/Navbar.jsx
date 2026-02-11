@@ -1,22 +1,37 @@
 import styles from "./Navbar.module.css"
 import { Link, useNavigate } from "react-router-dom"
-import { useAuth } from "../context/authContext.jsx";
-import { logout } from "../api/auth.js";
-import { useSearch } from "../context/searchContext.jsx";
+import { useAuth } from "../context/authContext.jsx"
+import { logout } from "../api/auth.js"
+import { useSearch } from "../context/searchContext.jsx"
+import {useState} from "react"
+import LoadSpinner from "./PageLoader.jsx"
 
 function Navbar(){
     const { setUser } = useAuth();
     const navigate = useNavigate();
     const {searchInput, setSearchInput} = useSearch();
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState("");
 
     async function logoutButton(){
         try{
-            await logout();
+            setLoading(true);
+            const data = await logout();
             setUser(null);
+            setLoading(false);
+
             navigate("/login");
+            
         } catch(error){
+            setError(error.message);
             console.log(error);
-        }
+        } 
+    }
+
+    if(loading){
+        return(
+            <LoadSpinner/>
+        )
     }
 
     function handleChange(input){

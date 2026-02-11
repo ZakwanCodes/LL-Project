@@ -11,7 +11,13 @@ export async function addToInventory (id){
             loomianId : id
         })
     });
+
     const data = await response.json();
+
+    if(!response.ok){
+        throw new Error(data.message || "login failed")
+    }
+
     return data;
 }
 
@@ -23,13 +29,14 @@ export async function removeOne(id){
         },
         credentials : "include"
     });
-    if (!response.ok) {
-        throw new Error(`Failed to remove loomian: ${response.status}`);
-    }
+
     const data = await response.json();
+
+    if(!response.ok){
+        throw new Error(data.message || "login failed")
+    }
+
     return data;
-    
-    
 }
 
 export async function removeAll(id){
@@ -40,9 +47,12 @@ export async function removeAll(id){
         },
         credentials : "include"
     });
-    if (!response.ok) {
-        throw new Error(`Failed to remove loomian: ${response.status}`);
-    }
+
     const data = await response.json();
+
+    if(!response.ok){
+        throw new Error(data.message || "login failed")
+    }
+
     return data;
 }

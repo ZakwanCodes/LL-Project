@@ -7,7 +7,14 @@ export async function register(email, userName, password){
         credentials: "include",
         body: JSON.stringify({email, userName, password})
     });
-    return response.json();
+
+    const data = await response.json();
+    //response.ok holds a bool value and returns true if status code is between 200-299 else returns false
+    if(!response.ok){
+        //throw exits the code and jumps to the nearest catch block
+        throw new Error(data.message || "registration failed");
+    }
+    return data;
 }
 
 export async function login(email, password){
@@ -18,8 +25,13 @@ export async function login(email, password){
         body: JSON.stringify({email, password})
     });
 
-    return response.json();
+    const data = await response.json();
 
+    if(!response.ok){
+        throw new Error(data.message || "login failed")
+    }
+
+    return data;
 }
 
 export async function logout(){
@@ -27,15 +39,24 @@ export async function logout(){
         method: "POST",
         credentials: "include"
     });
-    return response.json();
+    const data = await response.json();
+
+    if(!response.ok){
+        throw new Error(data.message || "logout failed")
+    }
+
+    return data;
 }
 export async function getMe(){
     const response = await fetch(`${BASE_URL}/me`,{
         credentials: "include",
     });
 
-    if(!response){
-        console.log("Error in getMe api");
+    const data = await response.json();
+
+    if(!response.ok){
+        throw new Error(data.message || "login failed")
     }
-    return response.json();
+
+    return data;
 }

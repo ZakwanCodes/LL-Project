@@ -8,7 +8,6 @@ export function InventoryProvider({ children }) {
     const [isAdding, setIsAdding] = useState({});
     const [isRemovingOne, setIsRemovingOne] = useState({});
     const [isRemovingAll, setIsRemovingAll] = useState(false);
-
     const [error, setError] = useState(null);
 
     
@@ -73,6 +72,7 @@ export function InventoryProvider({ children }) {
         }
         } else {
             setInventory([]);
+
         }
     }, []);
 

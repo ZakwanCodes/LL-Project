@@ -10,7 +10,13 @@ export async function getAllLoomians(){
         },
         credentials: "include",
     });
+   
     const data = await response.json();
+
+    if(!response.ok){
+        throw new Error(data.message || "login failed")
+    }
+
     return data;
 }
 
@@ -24,5 +30,10 @@ export async function getLoomianById(id){
     });
 
     const data = await response.json();
+
+    if(!response.ok){
+        throw new Error(data.message || "login failed")
+    }
+
     return data;
 }

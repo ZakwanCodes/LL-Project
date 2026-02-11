@@ -30,6 +30,12 @@ function Homepage(){
     fetchLoomians();
   }, []); 
 
+  if(loading){
+    return (
+        <LoadSpinner/>
+    )
+  }
+
   const {searchInput} = useSearch();
   
   const filteredLoomians = loomians.filter(function (loomian) {
@@ -39,12 +45,6 @@ function Homepage(){
   
     return (
     <div>
-        {isAddingError?.includes("network") && (
-            <div>
-                📡 You're offline - check your connection
-                <button onClick={retry}>Try Again</button>
-            </div>
-            )}
         <Navbar/>
         <div className={styles.loomianGrid}>
             {filteredLoomians.map(function (loomian) {

@@ -3,6 +3,8 @@ import { useInventory } from "../context/inventoryContext.jsx";
 import styles from "./inventory.module.css"
 import {useSearch} from "../context/searchContext.jsx"
 import {useEffect} from "react";
+import LoadSpinner from "../components/PageLoader.jsx"
+
 function InventoryPage(){
 
     
@@ -14,8 +16,6 @@ function InventoryPage(){
     const filteredLoomians = inventory.filter(function (inv) {
         return inv.loomian.name.toLowerCase().includes(searchInput.toLowerCase());
     });
-
- 
 
     return (
         <div>

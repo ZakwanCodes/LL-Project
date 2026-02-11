@@ -1,15 +1,18 @@
 import {useState} from "react"
 import {useNavigate} from "react-router-dom"
 import { useAuth } from "../context/authContext.jsx";
-import styles from "./login.module.css"
 import {login} from "../api/auth.js"
-
+import LoadSpinner from "../components/PageLoader.jsx"
+import styles from "./login.module.css"
 
 function Login(){
-    const {setUser} = useAuth();
     const navigate = useNavigate();
+    const {setUser} = useAuth();
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
 
     function saveInputEmail(input){
@@ -22,21 +25,26 @@ function Login(){
 
     async function loginButton(){
         try{
-            setError(""); // Clear any previous errors
+            setLoading(true);
             const result = await login(email, password);
-            
-            // Check if login failed (backend returns message on error)
-            if(result.message){
-                setError(result.message);
-                return;
-            }
-            
-            setUser(result.user); 
+
             navigate("/");
+            setUser(result.user); 
         } catch(error){
-            setError("An error occurred during login");
+            setError(error.message || "An error occurred during login");
             console.log(error);
+        } finally{
+            setLoading(false);
         }
+    }
+
+    if(loading){
+        return(
+            <div>
+                <LoadSpinner/>
+
+            </div>
+        )
     }
 
     return (
@@ -54,6 +62,7 @@ function Login(){
                         placeholder="Enter your email"
                         value = {email}
                         onChange = {saveInputEmail}
+                        disabled={loading}
                     />
                 </div>
                 <div className={styles.formGroup}>
@@ -64,11 +73,14 @@ function Login(){
                         placeholder="Enter your password"
                         value = {password}
                         onChange = {saveInputPassword}
+                        disabled = {loading}
                     />
                 </div>
                 <button
                     className={styles.button}
                     onClick = {loginButton}
+                    disabled = {loading}
+
                 >Login</button>
                 <div className={styles.footer}>
                     Don't have an account? <a href="/register" className={styles.link}>Sign Up</a>
