@@ -7,7 +7,7 @@ function InventoryPage(){
 
     
     
-    const {inventory, removeOneLoom, removeAllLoom} = useInventory();
+    const {inventory, removeOneLoom, removeAllLoom, isRemovingOne, isRemovingAll} = useInventory();
 
     const {searchInput} = useSearch();
 
@@ -37,14 +37,16 @@ function InventoryPage(){
                             <button 
                             onClick = {() => removeOneLoom(loom.loomian._id)}
                             className = {styles.specificButton}
+                            disabled = {isRemovingOne[loom.loomian._id]}
                             >
-                                Remove One
+                                {isRemovingOne[loom.loomian._id] ? "Removing..." : "Remove one"}
                             </button>
                             <button 
                             onClick = {() => removeAllLoom(loom.loomian._id)}
                             className = {styles.specificButton}
+                            disabled = {isRemovingAll}
                             >
-                                Remove All
+                                {isRemovingAll ? "Removing..." : "Remove All"}
                             </button>
                         </div>
                         

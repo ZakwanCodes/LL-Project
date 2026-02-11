@@ -1,6 +1,5 @@
 const BASE_URL = "http://localhost:3000/api/inventory";
 
-
 export async function addToInventory (id){
     const response = await fetch(`${BASE_URL}/`, {
         method: "POST",
@@ -17,7 +16,7 @@ export async function addToInventory (id){
 }
 
 export async function removeOne(id){
-    const response = await fetch(`${BASE_URL}/${id}`, {
+        const response = await fetch(`${BASE_URL}/${id}`, {
         method: "PATCH",
         headers: {
             "Content-Type" : "application/json"
@@ -29,6 +28,8 @@ export async function removeOne(id){
     }
     const data = await response.json();
     return data;
+    
+    
 }
 
 export async function removeAll(id){

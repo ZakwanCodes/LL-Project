@@ -85,7 +85,7 @@ async function seedLoomians() {
             },
             {
                 name: "Gamma Glacadia",
-                rarity: "Event",
+                rarity: "Roamer",
                 description: "Glacadia is a Cosmic-type Loomian introduced in Loomian Legacy - Veils of Shadow. It is a celestial being that controls gravitational forces and is said to have come from another dimension. It does not evolve from or into any other Loomian. The Gamma variant displays ethereal purple cosmic patterns.",
                 event: "Galactic Event",
                 value: 600,
@@ -103,72 +103,72 @@ async function seedLoomians() {
             },
             {
                 name: "Gamma Pyramind",
-                rarity: "Ancient",
+                rarity: "Mythical",
                 description: "Pyramind is an Ancient/Earth-type Loomian introduced in Loomian Legacy - Veils of Shadow. It is an ancient golem-like Loomian that has existed for millennia, often found guarding ancient ruins. It evolves from Obelisk starting at level 30. The Gamma variant features mysterious purple hieroglyphic markings.",
-                event: "Ancient Ruins Event",
+                event: "None",
                 value: 450,
                 demand: 8,
                 image: "/gamma-pyramind.png"
             },
             {
             name: "Gamma Xmas Ikazune",
-            rarity: "Event",
+            rarity: "Roamer",
             description: "Xmas Ikazune is a Fire/Spirit-type variant of Ikazune introduced during the Christmas Event in Loomian Legacy. It features festive holiday colors with red and green accents, candy cane patterns on its horns, and emits a warm holiday glow instead of its usual flames. The Gamma variant combines the holiday colors with the signature purple Gamma glow.",
-            event: "Christmas Event",
+            event: "Xmas",
             value: 800,
             demand: 10,
             image: "/gamma-xmas-ikazune.png"
         },
         {
             name: "Gamma Xmas Ragoon",
-            rarity: "Event",
+            rarity: "Route Rare",
             description: "Xmas Ragoon is a Brawler-type variant of Ragoon introduced during the Christmas Event. It wears a Santa hat and has red and green holiday-themed fur patterns. This festive variant evolves into Gamma Xmas Mutagon. The Gamma version adds purple Gamma energy to its holiday appearance.",
-            event: "Christmas Event",
+            event: "Xmas",
             value: 600,
             demand: 9,
             image: "/gamma-xmas-ragoon.png"
         },
         {
             name: "Gamma HW Shawchi",
-            rarity: "Event",
+            rarity: "Route Rare",
             description: "HW (Halloween) Shawchi is a Mind-type variant of Shawchi introduced during the Halloween Event. It features spooky pumpkin-like colors with orange and black patterns, glowing jack-o-lantern eyes, and a witch hat appearance. The Gamma variant gives it an eerie purple Halloween glow.",
-            event: "Halloween Event",
+            event: "Halloween",
             value: 700,
             demand: 9,
             image: "/gamma-hw-shawchi.png"
         },
         {
             name: "Gleam HW Duskit (Blue)",
-            rarity: "Event",
+            rarity: "Roamer",
             description: "Gleam HW (Halloween) Duskit Blue is a Spirit/Mind-type Halloween variant with blue accents. This version features ghostly blue flames, ethereal blue wisps, and spooky Halloween-themed patterns. As a Gleam variant, it has a unique shimmering effect different from Gamma variants.",
-            event: "Halloween Event",
+            event: "Halloween",
             value: 900,
             demand: 10,
             image: "/gleam-hw-duskit-blue.png"
         },
         {
             name: "Gleam HW Duskit (Orange)",
-            rarity: "Event",
+            rarity: "Roamer",
             description: "Gleam HW (Halloween) Duskit Orange is the orange-accented version of Halloween Duskit. It features vibrant orange Halloween colors, pumpkin-inspired patterns, and glowing orange spectral energy. This variant has the distinctive Gleam shimmer effect prized by collectors.",
-            event: "Halloween Event",
+            event: "Halloween",
             value: 850,
             demand: 9,
             image: "/gleam-hw-duskit-orange.png"
         },
         {
             name: "Gleam HW Duskit (Purple)",
-            rarity: "Event",
+            rarity: "Roamer",
             description: "Gleam HW (Halloween) Duskit Purple is the purple-accented Halloween variant. It displays deep purple Halloween colors, bat-inspired patterns, and mysterious purple spectral flames. The Gleam effect gives it an extra supernatural appearance perfect for the Halloween theme.",
-            event: "Halloween Event",
+            event: "Halloween",
             value: 950,
             demand: 10,
             image: "/gleam-hw-duskit-purple.png"
         },
         {
             name: "Gleam HW Duskit (Green)",
-            rarity: "Event",
+            rarity: "Roamer",
             description: "Gleam HW (Halloween) Duskit Green is the green-accented Halloween variant. It features eerie green colors, witchy patterns, and toxic-looking green spectral energy. This rare Gleam variant combines Halloween spookiness with the coveted Gleam visual effects.",
-            event: "Halloween Event",
+            event: "Halloween",
             value: 900,
             demand: 9,
             image: "/gleam-hw-duskit-green.png"

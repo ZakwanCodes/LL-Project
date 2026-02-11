@@ -2,6 +2,7 @@ import { Navigate } from "react-router-dom";
 import { useAuth } from "../context/authContext.jsx";
 import { useEffect, useState } from "react";
 import styles from "./ProtectedRoute.module.css";
+import LoadSpinner from "./PageLoader.jsx"
 
 function ProtectedRoute({ children }) {
   const { user, loading } = useAuth();
@@ -10,14 +11,9 @@ function ProtectedRoute({ children }) {
 
   // Still loading OR delay not finished
   if (loading) {
-    return (
-      <div className={styles.loadingContainer}>
-        <div className={styles.spinner}>
-          <div className={styles.spinnerCircle}></div>
-          <p className={styles.loadingText}>Loading...</p>
-        </div>
-      </div>
-    );
+    return(
+      <LoadSpinner/>
+    )
   }
 
   // Not logged in
