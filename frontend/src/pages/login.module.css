@@ -112,7 +112,7 @@
 }
 
 .link {
-  color: #667eea;
+  color: #764ba2;
   text-decoration: none;
   font-weight: 600;
   cursor: pointer;
@@ -120,7 +120,7 @@
 }
 
 .link:hover {
-  color: #764ba2;
+  color: #f093fb;
   text-decoration: underline;
 }
 

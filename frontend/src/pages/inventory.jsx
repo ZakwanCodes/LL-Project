@@ -4,13 +4,20 @@ import styles from "./inventory.module.css"
 import {useSearch} from "../context/searchContext.jsx"
 import {useEffect} from "react";
 function InventoryPage(){
+
+    
     
     const {inventory, removeOneLoom, removeAllLoom} = useInventory();
 
     const {searchInput} = useSearch();
+      console.log('Inventory structure:', inventory);
+    console.log('First item:', inventory[0]);
+    console.log('Items with missing loomian:', 
+        inventory.filter(inv => !inv || !inv.loomian)
+    );
 
     const filteredLoomians = inventory.filter(function (inv) {
-        return inv.loomian.name.toLowerCase().includes(searchInput.toLowerCase());
+        return inv.loomian && inv.loomian.name.toLowerCase().includes(searchInput.toLowerCase());
     });
 
     useEffect(() => {

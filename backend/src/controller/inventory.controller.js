@@ -1,5 +1,25 @@
 import User from "../models/user.js";
 
+// Helper to filter out null loomian references after populate
+//everytime seed runs, it deletes old id references of loomians so they become null
+// causing inventory loading errors
+function filterValidInventory(inventory) {
+    return inventory.filter(item => item.loomian !== null);
+}
+
+export async function getInventory(req, res) {
+    try {
+        const userId = req.user.id;
+        const populatedUser = await User.findById(userId)
+            .populate("inventory.loomian");
+
+        const validInventory = filterValidInventory(populatedUser.inventory);
+        res.json(validInventory);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Server error" });
+    }
+}
 
 export async function addToInventory(req, res) {
     try {
@@ -26,7 +46,8 @@ export async function addToInventory(req, res) {
         const populatedUser = await User.findById(userId)
             .populate("inventory.loomian");
 
-        res.json(populatedUser.inventory);
+        const validInventory = filterValidInventory(populatedUser.inventory);
+        res.json(validInventory);
 
 
     } catch (error) {
@@ -63,13 +84,13 @@ export async function removeOne(req, res) {
         const populatedUser = await User.findById(userId)
             .populate("inventory.loomian");
 
-        res.json(populatedUser.inventory);
+        const validInventory = filterValidInventory(populatedUser.inventory);
+        res.json(validInventory);
 
     } catch (error) {
         res.status(500).json({ message: "Server error" });
     }
 }
-
 
 export async function removeAll(req, res) {
     try {
@@ -87,7 +108,8 @@ export async function removeAll(req, res) {
         const populatedUser = await User.findById(userId)
             .populate("inventory.loomian");
 
-        res.json(populatedUser.inventory);
+        const validInventory = filterValidInventory(populatedUser.inventory);
+        res.json(validInventory);
 
     } catch (error) {
         res.status(500).json({ message: "Server error" });

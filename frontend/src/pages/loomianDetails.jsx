@@ -46,7 +46,7 @@ function LoomianDetails() {
             <div className={styles.rightSide}>
                 <div className={styles.statRow}>
                     <span className = {styles.valueTitle}>Value:</span> 
-                    <span className={styles.value}>{loomian.value}gr</span>
+                    <span className={styles.value}>{loomian.value} gr</span>
                 </div>
 
                 <div className={styles.statRow}>
