@@ -5,29 +5,7 @@ const InventoryContext = createContext();
 
 export function InventoryProvider({ children }) {
     const [inventory, setInventory] = useState([]);
-
-    // Fetch initial inventory from backend
-    useEffect(() => {
-        async function fetchInventory() {
-            try {
-                const res = await fetch("/api/inventory"); // your GET route
-                const data =  await res.json();
-                setInventory(data);
-                localStorage.setItem("inventory", JSON.stringify(data));
-            } catch (err) {
-                console.error(err);
-            }
-        }
-
-        // check localStorage first
-        const localData = localStorage.getItem("inventory");
-        if (localData) {
-            setInventory(JSON.parse(localData));
-        } else {
-            fetchInventory();
-        }
-    }, []);
-
+    
     // Add Loomian
     const addLoom = async (loomianId) => {
         try {
@@ -60,6 +38,11 @@ export function InventoryProvider({ children }) {
             console.error(err);
         }
     };
+
+    useEffect(() => {
+        const saved = localStorage.getItem("inventory");
+        setInventory(JSON.parse(saved));
+    }, []);
 
     return (
         <InventoryContext.Provider value={{ inventory, addLoom, removeOneLoom, removeAllLoom }}>
