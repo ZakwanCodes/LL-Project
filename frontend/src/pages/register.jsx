@@ -4,6 +4,7 @@ import { useAuth } from "../context/authContext.jsx";
 import {register} from "../api/auth.js"
 import LoadSpinner from "../components/PageLoader.jsx";
 import styles from "./register.module.css"
+import {Link} from "react-router-dom"
 
 
 
@@ -95,7 +96,7 @@ function Register(){
                     disabled = {loading}
                 >Register</button>
                 <div className={styles.footer}>
-                    Already have an account? <a href="/login" className={styles.link}>Sign In</a>
+                    Already have an account? <Link to ="/login" className={styles.link}>Sign In</Link>
                 </div>
             </div>
         </div>
