@@ -1,4 +1,4 @@
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "https://ll-project-dna5.onrender.com";
+const API_BASE_URL = "https://ll-project-dna5.onrender.com";
 
 export const API_ROUTES = {
   auth: `${API_BASE_URL}/api/auth`,
