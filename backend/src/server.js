@@ -9,6 +9,7 @@ import {ConnectDB} from "./lib/db.js"
 
 
 const app = express();
+app.set("trust proxy", 1);
 const PORT = process.env.PORT || 3000;
 const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:5173";
 
