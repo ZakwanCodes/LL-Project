@@ -1,4 +1,6 @@
-const BASE_URL = "http://localhost:3000/api/inventory";
+import { API_ROUTES } from "../config/api.js";
+
+const BASE_URL = API_ROUTES.inventory;
 
 export async function addToInventory (id){
     const response = await fetch(`${BASE_URL}/`, {

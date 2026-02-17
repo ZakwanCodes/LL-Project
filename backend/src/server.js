@@ -10,9 +10,10 @@ import {ConnectDB} from "./lib/db.js"
 
 const app = express();
 const PORT = process.env.PORT;
+const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:5173";
 
 app.use(cors({
-    origin : "http://localhost:5173",
+    origin : FRONTEND_URL,
     credentials : true,
 }));
 app.use(express.json());

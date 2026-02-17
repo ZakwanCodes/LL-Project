@@ -1,4 +1,6 @@
-const BASE_URL = "http://localhost:3000/api/auth";
+import { API_ROUTES } from "../config/api.js";
+
+const BASE_URL = API_ROUTES.auth;
 
 export async function register(email, userName, password){
     const response = await fetch(`${BASE_URL}/register`, {

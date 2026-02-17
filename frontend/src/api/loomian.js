@@ -1,6 +1,6 @@
-const BASE_URL = "http://localhost:3000/api/loomian";
+import { API_ROUTES } from "../config/api.js";
 
-
+const BASE_URL = API_ROUTES.loomian;
 
 export async function getAllLoomians(){
     const response = await fetch(`${BASE_URL}/`, {
