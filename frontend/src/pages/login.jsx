@@ -4,6 +4,7 @@ import { useAuth } from "../context/authContext.jsx";
 import {login} from "../api/auth.js"
 import LoadSpinner from "../components/PageLoader.jsx"
 import styles from "./login.module.css"
+import {Link} from "react-router-dom"
 
 function Login(){
     const navigate = useNavigate();
@@ -83,7 +84,7 @@ function Login(){
 
                 >Login</button>
                 <div className={styles.footer}>
-                    Don't have an account? <a href="/register" className={styles.link}>Sign Up</a>
+                    Don't have an account? <Link to="/register" className={styles.link}>Sign Up</Link>
                 </div>
             </div>
         </div>
