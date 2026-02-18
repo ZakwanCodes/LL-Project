@@ -48,16 +48,16 @@ The application replaces client-side storage with a secure backend system using 
 ## Running Locally
 
 **Backend**
-cd backend
-npm install
-npm run dev
+- cd backend
+- npm install
+- npm run dev
 
 **Frontend**
-cd frontend
-npm install
-npm run dev
+- cd frontend
+- npm install
+- npm run dev
 
 **Environmental Variables**
-MONGO_URI=
-JWT_SECRET=
-CLIENT_URL=
+- MONGO_URI=
+- JWT_SECRET=
+- CLIENT_URL=
